@@ -9,3 +9,9 @@ default:
 
 run *args:
 	cabal run . {{args}}
+
+fmt:
+	ormolu --mode inplace $(fd --glob *.hs)
+
+fmt-check:
+	ormolu --mode check $(fd --glob *.hs)

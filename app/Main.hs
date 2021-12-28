@@ -37,10 +37,10 @@ parseAtom = do
     _ -> Atom atom
 
 parseNumber :: Parser LispVal
-parseNumber = liftM (Number . read) $ many1 digit
+parseNumber = Number . read <$> many1 digit
 
 parseList :: Parser LispVal
-parseList = liftM List $ sepBy parseExpr spaces
+parseList = List <$> sepBy parseExpr spaces
 
 parseDottedList :: Parser LispVal
 parseDottedList = do
